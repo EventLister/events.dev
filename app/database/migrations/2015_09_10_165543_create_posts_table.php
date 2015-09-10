@@ -15,6 +15,11 @@ class CreatePostsTable extends Migration {
 		Schema::create('posts', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('event_name');
+			$table->string('event_description');
+			$table->string('event_location');
+			$table->dateTime('event_time');
+
 			$table->timestamps();
 		});
 	}
