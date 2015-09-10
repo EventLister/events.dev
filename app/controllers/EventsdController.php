@@ -3,15 +3,15 @@
 class PostsController extends \BaseController {
 
 	/**
-	 * Display a listing of posts
+	 * Display a listing of events
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$posts = Post::all();
+		$events = Post::all();
 
-		return View::make('posts.index', compact('posts'));
+		return View::make('events.index', compact('events'));
 	}
 
 	/**
@@ -21,7 +21,7 @@ class PostsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('posts.create');
+		return View::make('events.create');
 	}
 
 	/**
@@ -40,7 +40,7 @@ class PostsController extends \BaseController {
 
 		Post::create($data);
 
-		return Redirect::route('posts.index');
+		return Redirect::route('events.index');
 	}
 
 	/**
@@ -53,7 +53,7 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::findOrFail($id);
 
-		return View::make('posts.show', compact('post'));
+		return View::make('events.show', compact('post'));
 	}
 
 	/**
@@ -66,7 +66,7 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::find($id);
 
-		return View::make('posts.edit', compact('post'));
+		return View::make('events.edit', compact('post'));
 	}
 
 	/**
@@ -88,7 +88,7 @@ class PostsController extends \BaseController {
 
 		$post->update($data);
 
-		return Redirect::route('posts.index');
+		return Redirect::route('events.index');
 	}
 
 	/**
@@ -101,7 +101,7 @@ class PostsController extends \BaseController {
 	{
 		Post::destroy($id);
 
-		return Redirect::route('posts.index');
+		return Redirect::route('events.index');
 	}
 
 }
