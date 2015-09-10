@@ -18,5 +18,5 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/create', 'PostsController@create');
-Route::resource('posts', 'PostsController');
+Route::get('/create', 'EventsController@create');
+Route::resource('events', 'EventsController');

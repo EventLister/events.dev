@@ -1,6 +1,6 @@
 <?php
 
-class PostsController extends \BaseController {
+class EventsController extends \BaseController {
 
 	/**
 	 * Display a listing of events
@@ -9,13 +9,13 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$events = Post::all();
+		$events = Event::all();
 
 		return View::make('events.index', compact('events'));
 	}
 
 	/**
-	 * Show the form for creating a new post
+	 * Show the form for creating a new event
 	 *
 	 * @return Response
 	 */
@@ -25,81 +25,81 @@ class PostsController extends \BaseController {
 	}
 
 	/**
-	 * Store a newly created post in storage.
+	 * Store a newly created event in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Post::$rules);
+		$validator = Validator::make($data = Input::all(), Event::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Post::create($data);
+		Event::create($data);
 
 		return Redirect::route('events.index');
 	}
 
 	/**
-	 * Display the specified post.
+	 * Display the specified event.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		$post = Post::findOrFail($id);
+		$event = Event::findOrFail($id);
 
-		return View::make('events.show', compact('post'));
+		return View::make('events.show', compact('event'));
 	}
 
 	/**
-	 * Show the form for editing the specified post.
+	 * Show the form for editing the specified event.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-		$post = Post::find($id);
+		$event = Event::find($id);
 
-		return View::make('events.edit', compact('post'));
+		return View::make('events.edit', compact('event'));
 	}
 
 	/**
-	 * Update the specified post in storage.
+	 * Update the specified event in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$post = Post::findOrFail($id);
+		$event = Event::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Post::$rules);
+		$validator = Validator::make($data = Input::all(), Event::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		$post->update($data);
+		$event->update($data);
 
 		return Redirect::route('events.index');
 	}
 
 	/**
-	 * Remove the specified post from storage.
+	 * Remove the specified event from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		Post::destroy($id);
+		Event::destroy($id);
 
 		return Redirect::route('events.index');
 	}
