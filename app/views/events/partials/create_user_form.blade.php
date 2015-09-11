@@ -1,83 +1,47 @@
-<div class="row">
-			</div>
-			<div class="row">
-				<div class="form-group-inline">
-					<label for="username" class="control-label col-sm-2">Ramble Name:</label>
-					<div class="col-sm-8">
-						<input type="text" id="username" name="username" placeholder="Ramble Name" class="form-control"><br>
-					</div>
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="form-group-inline">
-					<label for="first_name" class="control-label col-sm-2">Name:</label>
-					<div class="col-sm-4">
-						<input type="text" id="first_name" name="first_name" placeholder="First Name" class="form-control"><br>
-					</div>
-						<div class="col-sm-4">
-						<input type="text" id="last_name"name="last_name" placeholder="Last Name" class="form-control"><br>
-					</div>
-				</div>
-			</div>
+			<div class="form-group @if($errors->has('username')) has-error @endif">
+                {{ Form::label('username', 'Username') }}
+                {{ Form::text('username', null, ['class' => 'form-control'])}}
+            </div>
 
-			<div class="row">
-				<div class="form-group-inline">
-					<label for="email" class="control-label col-sm-2">E-Mail:</label>
-					<div class="col-sm-4">
-						<input type="email" id="email" name="email" placeholder="Email Address" class="form-control"><br>
-					</div>
+			<div class="form-group @if($errors->has('first_name')) has-error @endif">
+                {{ Form::label('first_name', 'First Name') }}
+                {{ Form::text('first_name', null, ['class' => 'form-control'])}}
+            </div>
+            
+            <div class="form-group @if($errors->has('last_name')) has-error @endif">
+                {{ Form::label('last_name', 'Last Name') }}
+                {{ Form::text('last_name', null, ['class' => 'form-control'])}}
+            </div>
 
-					<div class="col-sm-4">
-						<input type="email" id="email_confirm" name="email_confirm"  placeholder="Re-Enter Email Address" class="form-control"><br>
-					</div>
-				</div>
-			</div>
+			<div class="form-group @if($errors->has('email')) has-error @endif">
+                {{ Form::label('email', 'Email') }}
+                {{ Form::text('email', null, ['class' => 'form-control'])}}
+            </div>
 
-			<div class="row">
-				<div class="form-group-inline">
-					<label for="password" class="control-label col-sm-2">Password:</label>
-					<div class="col-sm-4">
-						<input type="password" id="password" name="password"  placeholder="Password" class="form-control"><br>
-					</div>
-
-					<div class="col-sm-4">
-						<input type="password" id="password_confirm" name="password_confirm"  placeholder="Re-Enter Password" class="form-control"><br>
-					</div>
-				</div>
-			</div>
+			<div class="form-group @if($errors->has('password')) has-error @endif">
+                {{ Form::label('password', 'Password') }}
+                {{ Form::text('password', null, ['class' => 'form-control'])}}
+            </div>
 			
-			<div class="row">
-				<div class="form-group-inline">
-					<label for="address" class="control-label col-sm-2">Street Address:</label>
-					<div class="col-sm-8">
-						<input type="text" id="address" name="address" placeholder="Street Address" class="form-control"><br>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="form-group-inline">
-					<label for="address_line_2" class="control-label col-sm-2">Street Address (Line 2):</label>
-					<div class="col-sm-8">
-						<input type="text" id="address_line_2" name="address_line_2" placeholder="Unit Number, Suite, PO Box, etc." class="form-control"><br>
-					</div>
-				</div>
-			</div>
+            <div class="form-group @if($errors->has('password_confirmation')) has-error @endif">
+                {{ Form::label('password_confirmation', 'Re-enter Password') }}
+                {{ Form::text('password_confirmation', null, ['class' => 'form-control'])}}
+            </div>
+
+			<div class="form-group @if($errors->has('address')) has-error @endif">
+                {{ Form::label('address', 'Address') }}
+                {{ Form::text('address', null, ['class' => 'form-control'])}}
+            </div>
 				
-			<div class="row">
-				<div class="form-group-inline">
-					<label for="city" class="control-label col-sm-2">City</label>
-					<div class="col-sm-4">
-						<input type="text" id="city" name="city" placeholder="City" class="form-control"><br>
-					</div>
-				</div>
-			</div>
+			<div class="form-group @if($errors->has('city')) has-error @endif">
+                {{ Form::label('city', 'City') }}
+                {{ Form::text('city', null, ['class' => 'form-control'])}}
+            </div>
 
 			<div class="row">
-				<div class="form-group-inline">
-
-					<label for="state" class="col-sm-2 control-label">State</label>
+            <div class="form-group @if($errors->has('state')) has-error @endif">
+                    {{ Form::label('state', 'State') }}
 					<div class="col-sm-2">
 						<select class="form-control" id="state" name="state">
 							<option value="">N/A</option>
@@ -135,23 +99,18 @@
 							<option value="WY">Wyoming</option>
 						</select>
 					</div>
+				</div>
+			</div>
 
-					<label for="zip_code" class="control-label col-sm-2">Zip Code</label>
-					<div class="col-sm-2">
-						<input type="text" id="zip_code" name="zip_code" placeholder="Zip Code" class="form-control"><br>
-					</div>
-				</div>
-			</div>
+            <div class="form-group @if($errors->has('zip_code')) has-error @endif">
+                {{ Form::label('zip_code', 'Zip Code') }}
+                {{ Form::text('zip_code', null, ['class' => 'form-control'])}}
+            </div>
 			
-			<div class="row">
-				<div class="form-group-inline">
-					<label for="phone" class="control-label col-sm-2">Phone Number</label>
-					<div class="col-sm-4">
-						<input type="text" id="phone" name="phone" placeholder="Phone" class="form-control"><br>
-					</div>
-				</div>	
-			</div>
-				<div>
-					<input id="submit_button" type="submit">
-				</div>
+			<div class="form-group @if($errors->has('phone_number')) has-error @endif">
+                {{ Form::label('phone_number', 'Phone Number') }}
+                {{ Form::text('phone_number', null, ['class' => 'form-control'])}}
+            </div>
+
+			<button class="btn btn-lrg btn-primary">Submit</button>
 	</div>
