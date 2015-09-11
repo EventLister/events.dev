@@ -8,3 +8,9 @@ body{
 #form{
     margin-top: 50px;
 }
+
+.faded{
+    margin-top: 200px;
+    background-color: gray;
+    opacity: .3;
+}
