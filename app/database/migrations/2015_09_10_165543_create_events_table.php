@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration {
 			$table->string('event_description');
 			$table->string('event_location');
 			$table->dateTime('event_time');
+			$table->string('time_zone');
 
 			$table->timestamps();
 		});
