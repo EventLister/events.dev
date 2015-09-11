@@ -100,7 +100,7 @@
 						</select>
 					</div>
                     <div class="col-md-5">
-                        {{ Form::label('state', 'State') }}
+                        {{ Form::label('state', 'Time Zone') }}
                         <select class="form-control" id="time_zone" name="time_zone">
                             <option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
                             <option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
