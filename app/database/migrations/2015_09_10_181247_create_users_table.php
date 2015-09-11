@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration {
 		 		$table->string('state', 255);
 		 		$table->string('zip_code', 255);
 		 		$table->string('phone', 255);
-		 		$table->string('time_zone');
+		 		$table->string('time_zone')->nullable();
 
 
 			$table->rememberToken();
