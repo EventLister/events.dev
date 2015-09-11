@@ -1,6 +1,6 @@
 <?php
 
-use \Esensi\Model\Model
+use \Esensi\Model\Model;
 
 
 class CalendarEvent extends \Model {
