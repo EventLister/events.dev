@@ -9,7 +9,7 @@ class EventsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$events = Event::all();
+		$events = CalendarEvent::all();
 
 		return View::make('events.index', compact('events'));
 	}
@@ -31,7 +31,7 @@ class EventsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Event::$rules);
+		$validator = Validator::make($data = Input::all(), CalendarEvent::$rules);
 
 		if ($validator->fails())
 		{
@@ -51,7 +51,7 @@ class EventsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$event = Event::findOrFail($id);
+		$event = CalendarEvent::findOrFail($id);
 
 		return View::make('events.show', compact('event'));
 	}
@@ -64,7 +64,7 @@ class EventsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$event = Event::find($id);
+		$event = CalendarEvent::find($id);
 
 		return View::make('events.edit', compact('event'));
 	}
@@ -77,9 +77,9 @@ class EventsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$event = Event::findOrFail($id);
+		$event = CalendarEvent::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Event::$rules);
+		$validator = Validator::make($data = Input::all(), CalendarEvent::$rules);
 
 		if ($validator->fails())
 		{
@@ -99,7 +99,7 @@ class EventsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Event::destroy($id);
+		CalendarEvent::destroy($id);
 
 		return Redirect::route('events.index');
 	}
