@@ -1,8 +1,8 @@
 
 
-    <div class="form-group @if($errors->has('user_name')) has-error @endif">
-        {{ Form::label('user_name', 'User Name') }}
-        {{ Form::text('user_name', null, ['class' => 'form-control'])}}
+    <div class="form-group @if($errors->has('username')) has-error @endif">
+        {{ Form::label('username', 'Username') }}
+        {{ Form::text('username', null, ['class' => 'form-control'])}}
     </div>
 
     <div class="form-group @if($errors->has('password')) has-error @endif">
