@@ -1,6 +1,1 @@
-@extends('layouts.master')
-@section('title')
-
-@stop
-@section('content')
-@stop
+/vagrant/sites/events.dev/app/views/posts/index.blade.php
