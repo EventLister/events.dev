@@ -13,3 +13,5 @@
 	<div>
 		<button class="btn btn-primary pull-left"> Create Event </button>
 	</div>
+	
+</div>
