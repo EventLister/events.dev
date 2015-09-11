@@ -18,7 +18,7 @@
 			<div class="container">
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-			  Launch demo modal
+			  Sign Up
 			</button>
 			</div>
 			<div class="modal fade" id="myModal">
