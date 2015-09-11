@@ -26,13 +26,13 @@
             </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="{{{action('EventsController@index')}}}">Home</a></li>
+            <li><a href="#about">Events</a></li>
+            <li><a href="#contact">My Events</a></li>
             @if(Auth::check())
                 <li><a href="{{{action('HomeController@doLogout')}}}">Logout</a></li>
             @else
-                <li><a href="{{{action('HomeController@showLogin')}}}">Login</a></li>
+                <li><a href="{{{action('HomeController@showWelcome')}}}">Login</a></li>
             @endif
           </ul>
         </div><!--/.nav-collapse -->
