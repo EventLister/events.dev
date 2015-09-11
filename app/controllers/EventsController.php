@@ -41,12 +41,12 @@ class EventsController extends \BaseController {
 	    }
 
 	     else {
+
 	       	$event= new CalendarEvent();
-			$event->event_name = Input::get('title');
-			$event->event_description = Input::get('body');
-			$event->event_location = Input::get('body');
-			$event->event_time = Input::get('body');
-			$event->time_zone = Input::get('body');
+			$event->event_name = Input::get('event_name');
+			$event->event_description = Input::get('event_description');
+			$event->event_location = Input::get('event_loaction');
+			$event->event_time = Input::get('event_time');
 			$event->user_id = Auth::id(); 
 			$event->save();
 
@@ -65,9 +65,17 @@ class EventsController extends \BaseController {
 			$user->first_name = Input::get('first_name');
 			$user->last_name = Input::get('last_name');
 			$user->username = Input::get('username');
+			$user->address = Input::get('address');
+			$user->address_line_2 = Input::get('address_line_2');
+			$user->city = Input::get('city');
+			$user->state = Input::get('state');
+			$user->zip_code = Input::get('zip_code');
+			$user->phone = Input::get('phone');
+			$user->time_zone = Input::get('time_zone');
+
 			$user->save();
 
-			Session::flash('successMessage', 'Account created succesfully! You may now login.');
+			Session::flash('successMessage', 'Account created successfully! You may now login.');
 			return Redirect::action('HomeController@showLogin');
 
 	}
@@ -84,7 +92,7 @@ class EventsController extends \BaseController {
 
 		if(!$event) {
  
-			Session::flash('errorMessage', "Post with id of $id is not found"); 
+			Session::flash('errorMessage', "Event with id of $id is not found"); 
 
 			App::abort(404); 
 		}
@@ -100,9 +108,16 @@ class EventsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$event = CalendarEvent::find($id);
+		$event = CalanderEvent::find($id);
 
-		return View::make('events.edit', compact('event'));
+		if(!$event) {
+
+			Session::flash('errorMessage', "Event with id of $id is not found"); 
+
+			App::abort(404);  
+		}
+
+		return View::make('events.edit')->with('event', $event);
 	}
 
 	/**
@@ -113,18 +128,36 @@ class EventsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$event = CalendarEvent::findOrFail($id);
+		$validator = Validator::make(Input::all(), CalanderEvent::$rules);
 
-		$validator = Validator::make($data = Input::all(), CalendarEvent::$rules);
+	    if ($validator->fails()) {
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
+	    	Session::flash('errorMessage', 'Something went wrong, please refer to the errors listed below:');
+
+	       return Redirect::back()->withInput()->withErrors($validator);
+	    }
+
+	    else {
+			$event = CalanderEvent::find($id);
+
+			if(!$event) {
+
+				Session::flash('errorMessage', "Event with id of $id is not found"); 
+
+				App::abort(404);  
+			}
+
+			$event->event_name = Input::get('event_name');
+			$event->event_description = Input::get('event_description');
+			$event->event_location = Input::get('event_location');
+			$event->event_time = Input::get('event_time');
+			$event->time_zone = Input::get('time_zone');
+			$event->save();
+
+	        Session::flash('successMessage', 'Event updated successfully!');
+           	return Redirect::action('EventsController@show', array($id));
+	        
 		}
-
-		$event->update($data);
-
-		return Redirect::route('events.index');
 	}
 
 	/**
@@ -135,9 +168,17 @@ class EventsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		CalendarEvent::destroy($id);
+		$event = CalanderEvent::find($id);
+		$event->delete();
 
-		return Redirect::route('events.index');
+		if(!$event) {
+ 
+			Session::flash('errorMessage', "Event with id of $id is not found"); 
+
+			App::abort(404); 
+		}
+
+		Session::flash('successMessage', 'Event deleted successfully!');
 	}
 
 }
