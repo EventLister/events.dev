@@ -61,7 +61,7 @@
 			      </div>
 			      <div class="modal-body">
 			      	<div class="well" id="form">
-						{{ Form::open(array('action' => 'EventsController@storeUser')) }}
+						{{ Form::open(array('action' => 'HomeController@doLogin')) }}
 							@include('events.partials.login_form')
 						{{Form::close()}}
 					</div>
