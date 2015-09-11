@@ -57,6 +57,21 @@ class EventsController extends \BaseController {
 	    }
 	}
 
+		public function storeUser()
+	{
+		$user= new User();
+			$user->password = Input::get('password');
+			$user->email = Input::get('email');
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->username = Input::get('username');
+			$user->save();
+
+			Session::flash('successMessage', 'Account created succesfully! You may now login.');
+			return Redirect::action('HomeController@showLogin');
+
+	}
+
 	/**
 	 * Display the specified event.
 	 *
@@ -65,9 +80,16 @@ class EventsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$event = CalendarEvent::findOrFail($id);
+		$event = CalendarEvent::find($id);
 
-		return View::make('events.show', compact('event'));
+		if(!$event) {
+ 
+			Session::flash('errorMessage', "Post with id of $id is not found"); 
+
+			App::abort(404); 
+		}
+
+		return View::make('events.show')->with('event', $event);
 	}
 
 	/**

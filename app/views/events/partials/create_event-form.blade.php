@@ -1,3 +1,4 @@
+
 <div class="well colors col-sm-offset-2 col-sm-8 col-md-8">
 
 	<div class="form-group @if($errors->has('title')) has-error @endif">
