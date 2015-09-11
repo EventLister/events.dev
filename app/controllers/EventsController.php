@@ -75,7 +75,7 @@ class EventsController extends \BaseController {
 			$user->save();
 
 			Session::flash('successMessage', 'Account created successfully! You may now login.');
-			return Redirect::action('EventsController@index');
+			return Redirect::action('HomeController@showWelcome');
 
 	}
 
