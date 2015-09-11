@@ -31,16 +31,30 @@ class EventsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), CalendarEvent::$rules);
+		// create the validator
+	    $validator = Validator::make(Input::all(), CalendarEvent::$rules);
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+	    // attempt validation
+	    if ($validator->fails()) {
+	    	Session::flash('errorMessage', 'Something went wrong, please refer to the errors listed below:');
+	       return Redirect::back()->withInput()->withErrors($validator);
+	    }
 
-		Event::create($data);
+	     else {
+	       	$event= new CalendarEvent();
+			$event->event_name = Input::get('title');
+			$event->event_description = Input::get('body');
+			$event->event_location = Input::get('body');
+			$event->event_time = Input::get('body');
+			$event->time_zone = Input::get('body');
+			$event->user_id = Auth::id(); 
+			$event->save();
 
-		return Redirect::route('events.index');
+			Session::flash('successMessage', 'Event created successfully!');
+
+
+			return Redirect::action('EventsController@index');
+	    }
 	}
 
 	/**
