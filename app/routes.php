@@ -12,7 +12,9 @@
 */
 
 
-
+Route::get('login', 'HomeController@showLogin'); 
+Route::post('login', 'HomeController@doLogin'); 
+Route::get('logout', 'HomeController@doLogout');
 
 Route::get('/', 'HomeController@showWelcome');
 Route::post('users/create', 'EventsController@storeUser');
