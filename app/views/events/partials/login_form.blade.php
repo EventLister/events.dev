@@ -7,7 +7,7 @@
 
     <div class="form-group @if($errors->has('password')) has-error @endif">
         {{ Form::label('password', 'Password') }}
-        {{ Form::password('password', null, ['class' => 'form-control'])}}
+        {{ Form::password('password', ['class' => 'form-control'])}}
     </div>
 
     <div>
