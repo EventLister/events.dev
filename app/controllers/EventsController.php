@@ -66,17 +66,16 @@ class EventsController extends \BaseController {
 			$user->last_name = Input::get('last_name');
 			$user->username = Input::get('username');
 			$user->address = Input::get('address');
-			$user->address_line_2 = Input::get('address_line_2');
 			$user->city = Input::get('city');
 			$user->state = Input::get('state');
 			$user->zip_code = Input::get('zip_code');
-			$user->phone = Input::get('phone');
+			$user->phone = Input::get('phone_number');
 			$user->time_zone = Input::get('time_zone');
 
 			$user->save();
 
 			Session::flash('successMessage', 'Account created successfully! You may now login.');
-			return Redirect::action('HomeController@showLogin');
+			return Redirect::action('EventsController@index');
 
 	}
 
