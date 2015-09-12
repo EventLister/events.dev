@@ -8,6 +8,7 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="/css/main.css">
 
 </head>
@@ -28,13 +29,28 @@
           <ul class="nav navbar-nav">
             <li><a href="{{{action('EventsController@index')}}}">Home</a></li>
             <li><a href="#about">Events</a></li>
-            <li><a href="#contact">My Events</a></li>
             @if(Auth::check())
                 <li><a href="{{{action('HomeController@doLogout')}}}">Logout</a></li>
+            </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">{{{ Auth::user()->first_name }}}</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-calendar"></i> My Events</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i> Edit Profile</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
             @else
                 <li><a href="{{{action('HomeController@showWelcome')}}}">Login</a></li>
+            </ul>
             @endif
-          </ul>
+          
+
         </div><!--/.nav-collapse -->
       </div>
     </nav>
