@@ -15,7 +15,8 @@ Route::get('showevents', 'HomeController@showEvents');
 Route::post('login', 'HomeController@doLogin'); 
 Route::get('logout', 'HomeController@doLogout');
 Route::get('/home', 'EventsController@index');
-Route::get('/editProfile', 'EventsController@editUser');
+Route::get('/editProfile/{id}', 'EventsController@editProfile');
+Route::post('/editUser/{id}', 'EventsController@updateUser');
 
 Route::get('/', 'HomeController@showWelcome');
 Route::post('users/create', 'EventsController@storeUser');
