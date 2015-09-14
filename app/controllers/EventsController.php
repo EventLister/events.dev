@@ -85,6 +85,36 @@ class EventsController extends \BaseController {
 			return Redirect::action('HomeController@showWelcome');
 
 	}
+	
+	public function editUser($id)
+	{
+		$user = User::find($id);
+
+		if(!$user) {
+
+			Session::flash('errorMessage', "User with id of $id is not found"); 
+
+			App::abort(404);  
+		}else{
+
+			$user->password = Input::get('password');
+			$user->email = Input::get('email');
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->username = Input::get('username');
+			$user->address = Input::get('address');
+			$user->city = Input::get('city');
+			$user->state = Input::get('state');
+			$user->zip_code = Input::get('zip_code');
+			$user->phone = Input::get('phone_number');
+			$user->time_zone = Input::get('time_zone');
+
+			$user->save();
+
+			Session::flash('successMessage', 'Account updated successfully!');
+			return Redirect::action('EventsController@index');
+		}
+	}
 
 	/**
 	 * Display the specified event.
@@ -187,4 +217,5 @@ class EventsController extends \BaseController {
 		Session::flash('successMessage', 'Event deleted successfully!');
 	}
 
+	
 }
