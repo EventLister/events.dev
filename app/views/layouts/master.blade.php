@@ -28,7 +28,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="{{{action('EventsController@index')}}}">Home</a></li>
-            <li><a href="#about">Events</a></li>
+            <li><a href="{{{action('HomeController@showEvents')}}}">Events</a></li>
             @if(Auth::check())
                 <li><a href="{{{action('HomeController@doLogout')}}}">Logout</a></li>
             </ul>
