@@ -1,16 +1,6 @@
 @extends('layouts.master')
 @section('title')
 
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<!-- Animate css -->
-  <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
-	<!-- Custom styles CSS -->
-  <link href="/assets/css/style.css" rel="stylesheet" media="screen">
-
-
-
-
     <section id="portfolio" class="section">
 
       <div class="container">
@@ -111,25 +101,13 @@
 
     </section>
 
-
-
-  <!-- Javascript files -->
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Bootstrap JS -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <!-- Background slider -->
-  <script src="/assets/js/jquery.backstretch.min.js"></script>
-	 <!-- Waypoints -->
-  <script src="/assets/js/jquery.waypoints.js"></script>
-  <!-- WOW - Reveal Animations When You Scroll -->
-  <script src="/assets/js/wow.min.js"></script>   
-  <!-- Custom scripts -->
-    <script src="/assets/js/custom.js"></script>
-
-
-
 @stop
 @section('content')
 @stop
+
+
+
+
+
+
 
