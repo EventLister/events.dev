@@ -1,15 +1,14 @@
 @extends('layouts.master')
 @section('title')
-
-    <section id="portfolio" class="section">
+   <section id="portfolio" class="section">
 
       <div class="container">
 
         <div class="row">
 
           <div class="col-md-12 headline wow bounceInDown">
-            <h2>Portfolio</h2>
-            <p>My Projects.</p>
+            <h2>Events</h2>
+            <p>Upcoming Events</p>
           </div>
 
                             <div class="col-md-4 col-sm-6 wow bounceInLeft">
@@ -19,8 +18,8 @@
                   <img src="/images/weather.png" alt="">
                 </div>
                 <div class="portfolio-item-description">
-                  <h3>Three day weather app for San Antonio</h3>
-                  <p>Created using Google API and Javascript</p>
+                  <h3>This is an Event</h3>
+                  <p>This will be an Event</p>
                 </div>
               </div>
             </a>
@@ -104,6 +103,7 @@
 @stop
 @section('content')
 @stop
+ 
 
 
 
