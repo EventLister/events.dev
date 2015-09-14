@@ -119,7 +119,7 @@ class EventsController extends \BaseController {
 			Session::flash('errorMessage', "User with id of $id is not found"); 
 
 			App::abort(404);  
-		}elseif($user == Auth::user()->id){
+		}elseif($user->id == Auth::user()->id){
 
 			$user->password = Input::get('password');
 			$user->email = Input::get('email');
@@ -134,7 +134,7 @@ class EventsController extends \BaseController {
 			$user->time_zone = Input::get('time_zone');
 
 			$user->save();
-
+			
 			Session::flash('successMessage', 'Account updated successfully!');
 			return Redirect::action('EventsController@index');
 		}
