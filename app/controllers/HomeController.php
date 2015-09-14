@@ -17,7 +17,7 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('hello');
+		return View::make('hello')->with('tz', $this->tz_list());
 	}
 
 	public function showLogin()

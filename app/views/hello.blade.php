@@ -1,3 +1,6 @@
+<?php
+$current_date_time = date("h:i A T",time());
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,7 +11,6 @@
 
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
 	</head>
 	<body>
 		<header>
