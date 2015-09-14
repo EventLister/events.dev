@@ -2,6 +2,13 @@
 
 class EventsController extends \BaseController {
 
+
+	public function __construct()
+	{
+		parent::__construct(); 
+		$this->beforeFilter('auth', array('except' => array('index'))); 
+	}
+
 	/**
 	 * Display a listing of events
 	 *

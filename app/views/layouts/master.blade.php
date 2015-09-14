@@ -32,7 +32,7 @@
             @if(Auth::check())
                 <li><a href="{{{action('HomeController@doLogout')}}}">Logout</a></li>
             @else
-                <li><a href="{{{action('HomeController@showLogin')}}}">Login</a></li>
+                <li><a href="{{{action('HomeController@showWelcome')}}}">Login</a></li>
             @endif
           </ul>
         </div><!--/.nav-collapse -->
