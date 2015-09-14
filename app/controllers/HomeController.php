@@ -22,7 +22,12 @@ class HomeController extends BaseController {
 
 	public function showLogin()
 	{
-		return View::make('hello');
+		return View::make('hello')->with('tz', $this->tz_list());
+	}
+
+	public function showEvents()
+	{
+		return View::make('events.events');
 	}
 
 	public function doLogin()
