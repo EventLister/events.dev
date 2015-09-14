@@ -17,7 +17,11 @@ Route::get('logout', 'HomeController@doLogout');
 Route::get('/home', 'EventsController@index');
 Route::get('/editProfile', 'EventsController@editUser');
 
-Route::get('/', 'HomeController@showWelcome');
+// Route::get('/', 'HomeController@showWelcome');
+Route::get('/', function() {
+	return View::make('hello');
+});
+
 Route::post('users/create', 'EventsController@storeUser');
 Route::get('/create', 'EventsController@create');
 Route::resource('events', 'EventsController');
