@@ -15,21 +15,48 @@ class HomeController extends BaseController {
 	|
 	*/
 
+
+
+	public function tz_list() {
+	  $zones_array = array();
+	  $timestamp = time();
+	  foreach(timezone_identifiers_list() as $key => $zone) {
+	    date_default_timezone_set($zone);
+	    $zones_array[$key]['zone'] = $zone;
+	    $zones_array[$key]['diff_from_GMT'] = 'GMT ' . date('P', $timestamp);
+	  }
+	  return $zones_array;
+	}
+
 	public function showWelcome()
 	{
-		return View::make('hello')->with('tz', $this->tz_list());
+		$timezones = $this->tz_list();
+
+	    $timezone_options = "<option value=''>Select Time Zone</option>\n";
+
+	    foreach ($timezones AS $timezone) {
+
+	        date_default_timezone_set($timezone['zone']);
+	        $current_date_time = date("h:i A T",time());
+
+	        $selected = "";
+	        // if ($timezone['zone'] == $user['timezone']) {$selected = "selected='selected'";}
+
+	        $timezone_options .= "<option value='" . $timezone['zone'] . "' $selected>" . $timezone['diff_from_GMT'] . " " . $timezone['zone'] . " (Now: $current_date_time)</option>\n";
+	    }
+	    $options = $timezone_options;
+	    return View::make('hello', compact('options'));
 	}
 
 	public function showLogin()
 	{
-		return View::make('hello')->with('tz', $this->tz_list());
+		return View::make('hello')->with('tz', $this->$timezone_options);
 	}
 
 	public function showEvents()
 	{
 		return View::make('events.events');
 	}
-
 	public function doLogin()
 	{
 		$username = Input::get('username'); 

@@ -102,14 +102,7 @@
                     <div class="col-md-5">
                         {{ Form::label('state', 'Time Zone') }}
                         <select id="time_zone" name="time_zone" class="form-control">
-                            @foreach ($tz as $timezone)
-
-                                <option value="{{ $timezone['zone'] }}">{{ $timezone['diff_from_GMT'] }} {{ $timezone['zone'] }} (Now: {{ $current_date_time }})</option>
-
-
-                            @endforeach
-
-                            <?php //echo $timezone_options; ?>
+                            {{ $options }}
                         </select>
                     </div>
 				</div>

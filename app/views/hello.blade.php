@@ -1,6 +1,4 @@
-<?php
-$current_date_time = date("h:i A T",time());
-?>
+
 <!DOCTYPE html>
 <html>
 	<head>
