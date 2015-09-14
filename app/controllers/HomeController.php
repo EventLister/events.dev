@@ -28,8 +28,6 @@ class HomeController extends BaseController {
 	  return $zones_array;
 	}
 
-
-
 	public function showWelcome()
 	{
 		$timezones = $this->tz_list();
