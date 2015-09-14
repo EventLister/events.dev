@@ -15,7 +15,7 @@
             <a href="#" target="_blank" class="pop-up" title="Caption 1">
               <div class="portfolio-item">
                 <div class="portfolio-item-preview">
-                  <img src="/images/weather.png" alt="">
+                  <img src="/img/comingsoon2.00_jpg_srz" alt="">
                 </div>
                 <div class="portfolio-item-description">
                   <h3>This is an Event</h3>
@@ -29,11 +29,11 @@
             <a href="#" target="_blank" class="pop-up" title="Caption 2">
               <div class="portfolio-item">
                 <div class="portfolio-item-preview">
-                  <img src="/images/blog.png" alt="">
+                 <img src="/img/comingsoon2.00_jpg_srz" alt="">
                 </div>
                 <div class="portfolio-item-description">
-                  <h3>Simple Simon Says Game</h3>
-                  <p>Created using Javascript and CSS</p>
+                  <h3>This is an Event</h3>
+                  <p>This will be an Event</p>
                 </div>
               </div>
             </a>
@@ -43,11 +43,11 @@
             <a href="#" target="_blank" class="pop-up" title="Caption 3">
               <div class="portfolio-item">
                 <div class="portfolio-item-preview">
-                  <img src="/images/blog.png" alt="">
+                  <img src="/img/comingsoon2.00_jpg_srz" alt="">
                 </div>
                 <div class="portfolio-item-description">
-                  <h3>Classic Whack-A-Mole Game</h3>
-                  <p>Created using Javascript and CSS</p>
+                  <h3>This is an Event</h3>
+                  <p>This will be an Event</p>
                 </div>
               </div>
             </a>
@@ -57,11 +57,11 @@
             <a href="#" target="_blank" class="pop-up" title="Caption 4">
               <div class="portfolio-item">
                 <div class="portfolio-item-preview">
-                  <img src="/images/blog.png" alt="">
+                  <img src="/img/comingsoon2.00_jpg_srz" alt="">
                 </div>
                 <div class="portfolio-item-description">
-                  <h3> #johnslife Blog</h3>
-                  <p>Created using Bootstrap and Laravel</p>
+                  <h3>This is an Event</h3>
+                  <p>This will be an Event</p>
                 </div>
               </div>
             </a>
@@ -71,11 +71,11 @@
             <a href="#" target="_blank" class="pop-up" title="Caption 5">
               <div class="portfolio-item">
                 <div class="portfolio-item-preview">  
-                  <img src="/images/wowlister.png" alt="">
+                  <img src="/img/comingsoon2.00_jpg_srz" alt="">
                 </div>
                 <div class="portfolio-item-description">
-                  <h3>WoW Lister</h3>
-                  <p>Originally created in PHP revamped to Laravel</p>
+                  <h3>This is an Event</h3>
+                  <p>This will be an Event</p>
                 </div>
               </div>
             </a>
@@ -85,11 +85,11 @@
             <a href="#" target="_blank" class="pop-up" title="Caption 6">
               <div class="portfolio-item">
                 <div class="portfolio-item-preview">
-                  <img src="/images/comingsoon2.00_jpg_srz" alt="">
+                  <img src="/img/comingsoon2.00_jpg_srz" alt="">
                 </div>
                 <div class="portfolio-item-description">
-                  <h3>Coming Soon</h3>
-                  <p>Codeup Final Project (In Progress)</p>
+                  <h3>This is an Event</h3>
+                  <p>This will be an Event</p>
                 </div>
               </div>
             </a>
