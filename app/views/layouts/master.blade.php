@@ -32,8 +32,8 @@
           <ul class="nav navbar-nav">
             <li><a href="{{{action('EventsController@index')}}}">Home</a></li>
             <li><a href="{{{action('HomeController@showEvents')}}}">Events</a></li>
+          </ul>
             @if(Auth::check())
-                <li><a href="{{{action('HomeController@doLogout')}}}">Logout</a></li>
             </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -43,13 +43,14 @@
                             <li><a href="#"><i class="fa fa-calendar"></i> My Events</a></li>
                             <li><a href="/editProfile/{{{Auth::user()->id}}}"><i class="glyphicon glyphicon-user"></i> Edit Profile</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="{{{action('HomeController@doLogout')}}}">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
             @else
-                <li><a href="{{{action('HomeController@showWelcome')}}}">Login</a></li>
-            </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="{{{action('HomeController@showWelcome')}}}">Login</a></li>
+                </ul>
             @endif
           
 
@@ -58,9 +59,25 @@
     </nav>
 </header>
 <main>
-    
+    <div class="container">
+        @if (Session::has('successMessage'))
+            <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+        @endif
+        @if (Session::has('errorMessage'))
+            <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+        @endif
+        @if($errors->has())
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach($errors->all() as $key=> $error)
+                        <li>{{{$error}}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @yield('content')
+    </div>
 
-@yield('content')
 
 
 </main>
