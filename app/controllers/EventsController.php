@@ -66,7 +66,7 @@ class EventsController extends \BaseController {
 
 		public function storeUser()
 	{
-		$user= new User();
+		$user = new User();
 			$user->password = Input::get('password');
 			$user->email = Input::get('email');
 			$user->first_name = Input::get('first_name');
@@ -85,8 +85,32 @@ class EventsController extends \BaseController {
 			return Redirect::action('HomeController@showWelcome');
 
 	}
+
+	public function editProfile($id)
+	{
+
+		$timezones = $this->tz_list();
+		$user = User::find($id);
+
+	    $timezone_options = "<option value=''>Select Time Zone</option>\n";
+
+	    foreach ($timezones AS $timezone) {
+
+	        date_default_timezone_set($timezone['zone']);
+	        $current_date_time = date("h:i A T",time());
+
+	        $selected = "";
+	        if ($timezone['zone'] == $user['time_zone']) {$selected = "selected";}
+
+	        $timezone_options .= "<option value='" . $timezone['zone'] . "' $selected>" . $timezone['diff_from_GMT'] . " " . $timezone['zone'] . " (Now: $current_date_time)</option>\n";
+	    }
+	    $options = $timezone_options;
+
+
+		return View::make('events.editProfile', compact('options'))->with('user', $user);
+	}
 	
-	public function editUser($id)
+	public function updateUser($id)
 	{
 		$user = User::find($id);
 
@@ -95,7 +119,7 @@ class EventsController extends \BaseController {
 			Session::flash('errorMessage', "User with id of $id is not found"); 
 
 			App::abort(404);  
-		}else{
+		}elseif($user == Auth::user()->id){
 
 			$user->password = Input::get('password');
 			$user->email = Input::get('email');
@@ -106,7 +130,7 @@ class EventsController extends \BaseController {
 			$user->city = Input::get('city');
 			$user->state = Input::get('state');
 			$user->zip_code = Input::get('zip_code');
-			$user->phone = Input::get('phone_number');
+			$user->phone = Input::get('phone');
 			$user->time_zone = Input::get('time_zone');
 
 			$user->save();
@@ -215,6 +239,20 @@ class EventsController extends \BaseController {
 		}
 
 		Session::flash('successMessage', 'Event deleted successfully!');
+	}
+
+
+
+
+	public function tz_list() {
+	  $zones_array = array();
+	  $timestamp = time();
+	  foreach(timezone_identifiers_list() as $key => $zone) {
+	    date_default_timezone_set($zone);
+	    $zones_array[$key]['zone'] = $zone;
+	    $zones_array[$key]['diff_from_GMT'] = 'GMT ' . date('P', $timestamp);
+	  }
+	  return $zones_array;
 	}
 
 	

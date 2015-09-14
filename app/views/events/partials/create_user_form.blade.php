@@ -118,5 +118,5 @@
                 {{ Form::text('phone_number', null, ['class' => 'form-control'])}}
             </div>
 
-			<button class="btn btn-lrg btn-primary">Submit</button>
+			<button class="btn btn-lrg btn-primary btn-block">Submit</button>
 	</div>
