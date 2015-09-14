@@ -36,13 +36,12 @@
                 <li><a href="{{{action('HomeController@doLogout')}}}">Logout</a></li>
             </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">{{{ Auth::user()->first_name }}}</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{{ Auth::user()->first_name }}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="{{{action('EventsController@create')}}}"><i class="fa fa-calendar-plus-o"></i> Create Events</a></li>
                             <li><a href="#"><i class="fa fa-calendar"></i> My Events</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-user"></i> Edit Profile</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="{{{action('EventsController@editUser')}}}"><i class="glyphicon glyphicon-user"></i> Edit Profile</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Logout</a></li>
                         </ul>
