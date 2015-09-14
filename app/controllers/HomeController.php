@@ -48,11 +48,6 @@ class HomeController extends BaseController {
 	    return View::make('hello', compact('options'));
 	}
 
-	public function showLogin()
-	{
-		return View::make('hello')->with('tz', $this->$timezone_options);
-	}
-
 	public function showEvents()
 	{
 		return View::make('events.events');
