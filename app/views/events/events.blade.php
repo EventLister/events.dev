@@ -1,5 +1,8 @@
 @extends('layouts.master')
 @section('title')
+
+@stop
+@section('content')
    <section id="portfolio" class="section">
 
       <div class="container">
@@ -99,9 +102,6 @@
       </div><!-- .container -->
 
     </section>
-
-@stop
-@section('content')
 @stop
  
 
