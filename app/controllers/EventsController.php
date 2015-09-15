@@ -38,18 +38,8 @@ class EventsController extends \BaseController {
 	 */
 	public function store()
 	{
-		// create the validator
-	    $validator = Validator::make(Input::all(), CalendarEvent::$rules);
 
-	    // attempt validation
-	    if ($validator->fails()) {
-	    	Session::flash('errorMessage', 'Something went wrong, please refer to the errors listed below:');
-	       return Redirect::back()->withInput()->withErrors($validator);
-	    }
-
-	     else {
-
-	       	$event= new CalendarEvent();
+			$event= new CalendarEvent();
 			$event->event_name = Input::get('event_name');
 			$event->event_description = Input::get('event_description');
 			$event->event_location = Input::get('event_loaction');
@@ -57,12 +47,24 @@ class EventsController extends \BaseController {
 			$event->user_id = Auth::id(); 
 			$event->save();
 
+	    // attempt validation
+	    if (! $event->save()) {
+
+	    	return Redirect::to('create')
+	    	->withErrors($event->getErrors() )
+	    	->withInput();
+	    }
+	     else {
 			Session::flash('successMessage', 'Event created successfully!');
-
-
 			return Redirect::action('EventsController@index');
 	    }
 	}
+
+
+	       
+
+
+
 
 		public function storeUser()
 	{
