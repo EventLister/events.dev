@@ -27,6 +27,10 @@
         {{ Form::text('event_end', null, ['class' => 'form-control', 'id' => 'datetimepicker2'])}}
     </div>
 
+    <div class="col-sm-6 form-group @if($errors->has('img_url')) has-error @endif">
+        {{ Form::label('img_url', 'IMG') }}
+        {{ Form::file('img_url', null, ['class' => 'form-control'])}}
+    </div>
 
 
 	<div>
