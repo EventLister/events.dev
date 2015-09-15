@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-
+  <title>Upcoming Events</title>
 @stop
 @section('content')
    <section id="portfolio" class="section">
@@ -14,7 +14,7 @@
             <p>Upcoming Events</p>
           </div>
 
-                            <div class="col-md-4 col-sm-6 wow bounceInLeft">
+          <div class="col-md-4 col-sm-6 wow bounceInLeft">
             <a href="#" target="_blank" class="pop-up" title="Caption 1">
               <div class="portfolio-item">
                 <div class="portfolio-item-preview">
