@@ -43,7 +43,9 @@ class EventsController extends \BaseController {
 			$event->event_name = Input::get('event_name');
 			$event->event_description = Input::get('event_description');
 			$event->event_location = Input::get('event_location');
-			$event->event_time = Input::get('event_time');
+			$event->event_start = Input::get('event_start');
+			$event->event_end = Input::get('event_end');
+			$event->img_url = Input::get('img_url');
 			$event->user_id = Auth::id(); 
 			$event->save();
 

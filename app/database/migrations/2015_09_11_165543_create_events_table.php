@@ -18,7 +18,9 @@ class CreateEventsTable extends Migration {
 			$table->string('event_name');
 			$table->text('event_description');
 			$table->string('event_location');
-			$table->dateTime('event_time');
+			$table->dateTime('event_start');
+			$table->dateTime('event_end');
+			$table->string('img_url')->nullable();
 			$table->integer('user_id')->unsigned();
     		$table->foreign('user_id')->references('id')->on('users');
 
