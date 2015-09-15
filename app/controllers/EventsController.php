@@ -89,24 +89,14 @@ class EventsController extends \BaseController {
 	public function editProfile($id)
 	{
 
-		$timezones = $this->tz_list();
 		$user = User::find($id);
 
-	    $timezone_options = "<option value=''>Select Time Zone</option>\n";
-
-	    foreach ($timezones AS $timezone) {
-
-	        date_default_timezone_set($timezone['zone']);
-	        $current_date_time = date("h:i A T",time());
-
-	        $selected = "";
-
-	        $timezone_options .= "<option value='" . $timezone['zone'] . "' $selected>" . $timezone['diff_from_GMT'] . " " . $timezone['zone'] . " (Now: $current_date_time)</option>\n";
-	    }
-	    $options = $timezone_options;
+		$timezones = $this->tz_list();
+		
+		$time_zone = Form::select('time_zone', $timezones, $user->time_zone,['class' => 'form-control']);
 
 
-		return View::make('events.editProfile', compact('options'))->with('user', $user);
+		return View::make('events.editProfile', compact('time_zone'))->with('user', $user);
 	}
 	
 	public function updateUser($id)
@@ -246,10 +236,11 @@ class EventsController extends \BaseController {
 	public function tz_list() {
 		$zones_array = array();
 		$timestamp = time();
+		$zones_array[''] = 'Select Timezone...';
 		foreach(timezone_identifiers_list() as $key => $zone) {
 		    date_default_timezone_set($zone);
-		    $zones_array[$key]['zone'] = $zone;
-		    $zones_array[$key]['diff_from_GMT'] = 'GMT ' . date('P', $timestamp);
+		    $current_date_time = date("h:i A T",time());
+		    $zones_array[$zone] = 'GMT ' . date('P', $timestamp) . $zone . ' (Now: ' . $current_date_time . ')';
 		}
 	  return $zones_array;
 	}
