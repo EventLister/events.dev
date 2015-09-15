@@ -105,7 +105,6 @@
                     <div class="col-md-6">
                         {{ Form::label('time_zone', 'Time Zone') }}
                         {{ $time_zone }}
-                        
                     </div>
                 </div>
             </div>
