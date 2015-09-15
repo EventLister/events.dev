@@ -13,8 +13,14 @@ class CalendarEvent extends Model {
 	'event_name' => 'required|max:255',
 	'event_description' => 'required',
 	'event_location' => 'required|max:255',
-	'event_start' => 'required|max:255',
-	'event_end' => 'required|max:255',
+	'event_start' => 'required|date',
+	'event_end' => 'required|date',
 	);
+
+
+    public function user()
+    {
+        return $this->belongsTo('User', 'user_id');
+    }
 
 }
