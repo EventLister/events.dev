@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('event_name');
-			$table->string('event_description');
+			$table->text('event_description');
 			$table->string('event_location');
 			$table->dateTime('event_time');
 			$table->integer('user_id')->unsigned();
