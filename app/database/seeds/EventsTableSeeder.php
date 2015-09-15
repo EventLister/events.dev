@@ -11,8 +11,14 @@ class EventsTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			Event::create([
-
+			CalendarEvent::create([
+            'event_name' => $faker->name,
+            'event_description' => $faker->realText($maxNbChars = 200),
+            'event_location' => $faker->streetAddress,
+            'event_start' => $faker->dateTimeThisYear,
+            'event_end' => $faker->dateTimeThisMonth,
+            'img_url' => "nature-q-c-640-480-" . $faker->numberBetween($min = 1, $max = 10) . '.jpg',
+            'user_id' => $faker->numberBetween($min = 1, $max = 4),
 			]);
 		}
 	}

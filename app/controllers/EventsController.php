@@ -168,6 +168,20 @@ class EventsController extends \BaseController {
 		return View::make('events.show')->with('event', $event);
 	}
 
+	public function userEvents()
+	{
+		$events = CalendarEvent::with('user')->where('user_id', Auth::id())->get();
+
+		if(!$events) {
+ 
+			Session::flash('errorMessage', "No events for user found"); 
+
+			App::abort(404); 
+		}
+
+		return View::make('events.my_events')->with('events', $events);
+	}
+
 	/**
 	 * Show the form for editing the specified event.
 	 *
@@ -176,7 +190,7 @@ class EventsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$event = CalanderEvent::find($id);
+		$event = CalendarEvent::find($id);
 
 		if(!$event) {
 

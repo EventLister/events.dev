@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class HomeController extends \BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -35,7 +35,8 @@ class HomeController extends BaseController {
 
 	public function showEvents()
 	{
-		return View::make('events.events');
+		$events = CalendarEvent::all();
+		return View::make('events.events')->with('events', $events);
 	}
 	public function doLogin()
 	{

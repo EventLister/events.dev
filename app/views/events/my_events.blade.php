@@ -13,7 +13,6 @@
             <h2>Events</h2>
             <p>Upcoming Events</p>
           </div>
-
           @foreach($events as $key=>$event)
           <div class="col-md-4 col-sm-6 wow bounceInLeft">
             <a href="/show/{{ $event->id }}" target="_blank" class="pop-up" title="Caption 1">
@@ -29,6 +28,9 @@
             </a>
           </div>
           @endforeach
+
+          
+
         </div><!-- .row -->
 
       </div><!-- .container -->
