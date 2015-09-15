@@ -35,10 +35,6 @@
                         </div>
                     @endif
                 </div>
-                <div class="col-md-8 col-md-offset-2 well faded">
-                    <p>Welcome to event lister</p>
-                </div>
-                
             </div>
                     <div class="well" id="form">
                         {{ Form::open(array('action' => 'EventsController@storeUser')) }}
