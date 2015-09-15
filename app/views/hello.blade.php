@@ -39,10 +39,10 @@
 					<p>Welcome to event lister</p>
 				</div>
 				<div class="col-md-8 col-md-offset-2">
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+					<a href="{{{action('EventsController@createUser')}}}">
+					<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal">
 					  Sign Up
-					</button>
+					</button></a>
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#loginModal">
 					  Login
@@ -50,25 +50,7 @@
 				</div>
 			</div>
 			</div>
-			<div class="modal fade" id="myModal">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title"> Create User</h4>
-			      </div>
-			      <div class="modal-body">
-			      	<div class="well" id="form">
-						{{ Form::open(array('action' => 'EventsController@storeUser')) }}
-							@include('events.partials.create_user_form')
-						{{Form::close()}}
-					</div>
-			      </div>
-			      <div class="modal-footer">			        
-			      </div>
-			    </div><!-- /.modal-content -->
-			  </div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
+			
 			<div class="modal fade" id="loginModal">
 			  <div class="modal-dialog">
 			    <div class="modal-content">

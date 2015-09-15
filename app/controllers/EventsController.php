@@ -6,7 +6,7 @@ class EventsController extends \BaseController {
 	public function __construct()
 	{
 		parent::__construct(); 
-		$this->beforeFilter('auth', array('except' => array('index', 'storeUser'))); 
+		$this->beforeFilter('auth', array('except' => array('index', 'storeUser', 'createUser'))); 
 	}
 
 	/**
@@ -60,7 +60,17 @@ class EventsController extends \BaseController {
 	    }
 	}
 
+	public function createUser()
+	{
 
+		$timezones = $this->tz_list();
+		
+		$time_zone = Form::select('time_zone', $timezones,null,['class' => 'form-control']);
+
+
+		return View::make('events.create_user', compact('time_zone'));
+
+	}
 	       
 
 
