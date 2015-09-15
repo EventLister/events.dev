@@ -30,22 +30,7 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		$timezones = $this->tz_list();
-
-	    $timezone_options = "<option value=''>Select Time Zone</option>\n";
-
-	    foreach ($timezones AS $timezone) {
-
-	        date_default_timezone_set($timezone['zone']);
-	        $current_date_time = date("h:i A T",time());
-
-	        $selected = "";
-	        // if ($timezone['zone'] == $user['timezone']) {$selected = "selected='selected'";}
-
-	        $timezone_options .= "<option value='" . $timezone['zone'] . "' $selected>" . $timezone['diff_from_GMT'] . " " . $timezone['zone'] . " (Now: $current_date_time)</option>\n";
-	    }
-	    $options = $timezone_options;
-	    return View::make('hello', compact('options'));
+	    return View::make('hello');
 	}
 
 	public function showEvents()

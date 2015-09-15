@@ -104,9 +104,7 @@
 					</div>
                     <div class="col-md-5">
                         {{ Form::label('state', 'Time Zone') }}
-                        <select id="time_zone" name="time_zone" class="form-control">
-                            {{ $options }}
-                        </select>
+                        {{ $time_zone }}
                     </div>
 				</div>
 			</div>

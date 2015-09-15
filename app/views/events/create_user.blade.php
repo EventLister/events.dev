@@ -15,6 +15,7 @@
             
         </header>
         <main>
+            
             <div class="container">
             <div class="row">
                 <div>
@@ -34,13 +35,18 @@
                         </div>
                     @endif
                 </div>
-            </div>
-                <div class="well" id="form">
-                    {{ Form::open(array('action' => 'EventsController@storeUser')) }}
-                        @include('events.partials.create_user_form')
-                    {{Form::close()}}
+                <div class="col-md-8 col-md-offset-2 well faded">
+                    <p>Welcome to event lister</p>
                 </div>
+                
             </div>
+                    <div class="well" id="form">
+                        {{ Form::open(array('action' => 'EventsController@storeUser')) }}
+                            @include('events.partials.create_user_form')
+                        {{Form::close()}}
+                    </div>
+            </div>
+                    
         </main>
         <footer>
             <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
