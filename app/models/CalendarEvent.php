@@ -12,7 +12,7 @@ class CalendarEvent extends Model {
 	protected $rules = array(
 	'event_name' => 'required|max:255',
 	'event_description' => 'required',
-	'event_location' => 'required|max:255',
+	// 'event_location' => 'required|max:255',
 	'event_time' => 'required|max:255',
 	);
 
