@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/jquery.datetimepicker.css"/ >
+    <link rel="stylesheet" type="text/css" href="jquery.datetimepicker.css"/ >
 
 </head>
 <body>
@@ -97,7 +99,10 @@
   <!-- WOW - Reveal Animations When You Scroll -->
   <script src="/assets/js/wow.min.js"></script>   
   <!-- Custom scripts -->
-    <script src="/assets/js/custom.js"></script>
+  <script src="/assets/js/custom.js"></script>
+  <script src="jquery.datetimepicker.js"></script>
+  <script>jQuery('#datetimepicker').datetimepicker();</script>
+
 </footer>
 </body>
 </html>

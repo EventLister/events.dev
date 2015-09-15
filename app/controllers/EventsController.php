@@ -39,10 +39,10 @@ class EventsController extends \BaseController {
 	public function store()
 	{
 
-			$event= new CalendarEvent();
+		$event= new CalendarEvent();
 			$event->event_name = Input::get('event_name');
 			$event->event_description = Input::get('event_description');
-			$event->event_location = Input::get('event_loaction');
+			$event->event_location = Input::get('event_location');
 			$event->event_time = Input::get('event_time');
 			$event->user_id = Auth::id(); 
 			$event->save();
@@ -90,8 +90,8 @@ class EventsController extends \BaseController {
 			$user->zip_code = Input::get('zip_code');
 			$user->phone = Input::get('phone_number');
 			$user->time_zone = Input::get('time_zone');
-
 			$user->save();
+
 
 			Session::flash('successMessage', 'Account created successfully! You may now login.');
 			return Redirect::action('HomeController@showWelcome');
