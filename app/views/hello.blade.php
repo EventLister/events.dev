@@ -18,25 +18,25 @@
 			
 			<div class="container">
 			<div class="row">
+				<div>
+					@if (Session::has('successMessage'))
+			            <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+			        @endif
+			        @if (Session::has('errorMessage'))
+			            <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+			        @endif
+			        @if($errors->has())
+			            <div class="alert alert-danger" role="alert">
+			                <ul>
+			                    @foreach($errors->all() as $key=> $error)
+			                        <li>{{{$error}}}</li>
+			                    @endforeach
+			                </ul>
+			            </div>
+			        @endif
+				</div>
 				<div class="col-md-8 col-md-offset-2 well faded">
 					<p>Welcome to event lister</p>
-				</div>
-				<div>
-					 @if (Session::has('successMessage'))
-            <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
-        @endif
-        @if (Session::has('errorMessage'))
-            <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
-        @endif
-        @if($errors->has())
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    @foreach($errors->all() as $key=> $error)
-                        <li>{{{$error}}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 				</div>
 				<div class="col-md-8 col-md-offset-2">
 					<!-- Button trigger modal -->
