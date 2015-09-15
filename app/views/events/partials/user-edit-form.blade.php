@@ -41,9 +41,10 @@
 
             <div class="row">
             <div class="form-group @if($errors->has('state')) has-error @endif">
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                     {{ Form::label('state', 'State') }}
-                    {{ Form::select('state',array( 
+                    {{ Form::select('state',array(
+                        ''=>'Select State...',
                         'AL'=>'Alabama',
                         'AK'=>'Alaska',
                         'AZ'=>'Arizona',
@@ -101,12 +102,10 @@
                         'class'       => 'form-control'
                     )) }}
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         {{ Form::label('time_zone', 'Time Zone') }}
-                        <select id="time_zone" name="time_zone" class="form-control">
-                            {{ Input::old('time_zone') }}
-                            {{ $options }}
-                        </select>
+                        {{ $time_zone }}
+                        
                     </div>
                 </div>
             </div>
