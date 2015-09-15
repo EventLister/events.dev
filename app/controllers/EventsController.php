@@ -39,13 +39,18 @@ class EventsController extends \BaseController {
 	public function store()
 	{
 
+		$file = Input::file('img_url');
+		$destinationPath = public_path() . '/img';
+		$filename = $file->getClientOriginalName();
+		Input::file('img_url')->move($destinationPath, $filename);
+
 		$event= new CalendarEvent();
 			$event->event_name = Input::get('event_name');
 			$event->event_description = Input::get('event_description');
 			$event->event_location = Input::get('event_location');
 			$event->event_start = Input::get('event_start');
 			$event->event_end = Input::get('event_end');
-			$event->img_url = Input::get('img_url');
+			$event->img_url = $filename;
 			$event->user_id = Auth::id(); 
 			$event->save();
 

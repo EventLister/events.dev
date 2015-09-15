@@ -4,7 +4,7 @@
 @stop
 @section('content')
 
-	{{ Form::open(array('action' => 'EventsController@store')) }}
+	{{ Form::open(array('action' => 'EventsController@store', 'files' => true)) }}
 
 		@include('events.partials.create_event-form')
 
