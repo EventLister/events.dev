@@ -16,9 +16,16 @@ class EventsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$events = CalendarEvent::all();
-
+		// $users = DB::table('users')->where('votes', '>', 100)->get();
+		// $events = CalendarEvent::users() 
+		// Auth::user()->id
 		return View::make('events.index', compact('events'));
+	}
+
+	public function userProfile()
+	{
+		$events = CalendarEvent::where('user_id', '=', Auth::id())->get();
+		return View::make('events.profile', compact('events'));
 	}
 
 	/**
@@ -78,7 +85,7 @@ class EventsController extends \BaseController {
 		
 		$state = Form::select('state', $states, null,['class' => 'form-control']);
 
-		return View::make('events.create_user', compact('time_zone', 'state '));
+		return View::make('events.create_user', compact('time_zone', 'state'));
 
 	}
 	       
