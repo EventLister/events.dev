@@ -45,8 +45,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{{action('EventsController@create')}}}"><i class="fa fa-calendar-plus-o"></i> Create Events</a></li>
                             <li><a href="{{{action('EventsController@userEvents')}}}"><i class="fa fa-calendar"></i> My Events</a></li>
-                             <li><a href="{{{action('EventsController@userProfile')}}}"><i class="fa fa-calendar"></i> My Profile</a></li>
-                            <li><a href="/editProfile/{{{Auth::user()->id}}}"><i class="glyphicon glyphicon-user"></i> Edit Profile</a></li>
+                             <li><a href="{{{action('EventsController@userProfile')}}}"><i class="glyphicon glyphicon-user"></i> My Profile</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{{action('HomeController@doLogout')}}}">Logout</a></li>
                         </ul>

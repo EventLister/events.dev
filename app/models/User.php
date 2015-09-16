@@ -36,4 +36,18 @@ class User extends Model implements UserInterface, RemindableInterface {
 
 	protected $hashable = ['password'];
 
+
+	public function eventsCreated()
+    {
+        return $this->belongsTo('CalendarEvent', 'user_id');
+    }
+
+    public function eventsAttending()
+    {
+        return $this->belongsToMany('CalendarEvent', 'event_user', 'user_id', 'event_id');
+    }
+
+    
+
+
 }

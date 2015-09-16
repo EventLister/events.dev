@@ -22,6 +22,17 @@ class EventsController extends \BaseController {
 		return View::make('events.index', compact('events'));
 	}
 
+	// public function attend($id)
+	// {
+		
+	// 	$user = Auth::user()->find($id);
+
+	// 	$event = CalendarEvent($)
+
+	// 	$user->eventsAttending()attach($event);
+	// }
+
+
 	public function userProfile()
 	{
 		$events = CalendarEvent::where('user_id', '=', Auth::id())->get();

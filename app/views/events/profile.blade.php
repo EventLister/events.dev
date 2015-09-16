@@ -20,16 +20,8 @@
 	                  <table class="table table-user-information">
 	                    <tbody>
 	                      <tr>
-	                        <td>Department:</td>
-	                        <td>Programming</td>
-	                      </tr>
-	                      <tr>
 	                        <td>Member Since:</td>
 	                        <td>{{Auth::user()->created_at}}</td>
-	                      </tr>
-	                      <tr>
-	                        <td>Date of Birth</td>
-	                        <td>01/24/1988</td>
 	                      </tr>
 	                      <tr>
 	                        <td>Gender</td>
