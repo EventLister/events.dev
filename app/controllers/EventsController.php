@@ -225,8 +225,9 @@ class EventsController extends \BaseController {
 			App::abort(404);  
 		}
 
-		return View::make('events.edit')->with('event', $event);
+		return View::make('events.editEvent')->with('event', $event);
 	}
+
 
 	/**
 	 * Update the specified event in storage.
@@ -236,17 +237,8 @@ class EventsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$validator = Validator::make(Input::all(), CalanderEvent::$rules);
 
-	    if ($validator->fails()) {
-
-	    	Session::flash('errorMessage', 'Something went wrong, please refer to the errors listed below:');
-
-	       return Redirect::back()->withInput()->withErrors($validator);
-	    }
-
-	    else {
-			$event = CalanderEvent::find($id);
+			$event = CalendarEvent::find($id);
 
 			if(!$event) {
 
@@ -254,18 +246,24 @@ class EventsController extends \BaseController {
 
 				App::abort(404);  
 			}
-
+			if(Input::file()){
+				$file = Input::file('img_url');
+				$destinationPath = public_path() . '/img';
+				$filename = $file->getClientOriginalName();
+				Input::file('img_url')->move($destinationPath, $filename);
+				$event->img_url = $filename;
+			}
 			$event->event_name = Input::get('event_name');
 			$event->event_description = Input::get('event_description');
 			$event->event_location = Input::get('event_location');
-			$event->event_time = Input::get('event_time');
-			$event->time_zone = Input::get('time_zone');
+			$event->event_start = Input::get('event_start');
+			$event->event_end = Input::get('event_end');
 			$event->save();
 
 	        Session::flash('successMessage', 'Event updated successfully!');
            	return Redirect::action('EventsController@show', array($id));
 	        
-		}
+		
 	}
 
 	/**
