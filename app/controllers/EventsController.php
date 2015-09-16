@@ -78,7 +78,7 @@ class EventsController extends \BaseController {
 		
 		$state = Form::select('state', $states, null,['class' => 'form-control']);
 
-		return View::make('events.create_user', compact('time_zone', 'state '));
+		return View::make('events.create_user', compact('time_zone', 'state'));
 
 	}
 	       
