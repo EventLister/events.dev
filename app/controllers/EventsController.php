@@ -74,8 +74,11 @@ class EventsController extends \BaseController {
 		
 		$time_zone = Form::select('time_zone', $timezones,null,['class' => 'form-control']);
 
+		$states = $this->state_list();
+		
+		$state = Form::select('state', $states, null,['class' => 'form-control']);
 
-		return View::make('events.create_user', compact('time_zone'));
+		return View::make('events.create_user', compact('time_zone', 'state '));
 
 	}
 	       
@@ -114,8 +117,13 @@ class EventsController extends \BaseController {
 		
 		$time_zone = Form::select('time_zone', $timezones, $user->time_zone,['class' => 'form-control']);
 
+		$states = $this->state_list();
+		
+		$state = Form::select('state', $states, $user->state,['class' => 'form-control']);
 
-		return View::make('events.editProfile', compact('time_zone'))->with('user', $user);
+
+
+		return View::make('events.editProfile', compact('time_zone', 'state'))->with('user', $user);
 	}
 	
 	public function updateUser($id)
@@ -276,6 +284,69 @@ class EventsController extends \BaseController {
 		    $zones_array[$zone] = 'GMT ' . date('P', $timestamp) . $zone . ' (Now: ' . $current_date_time . ')';
 		}
 	  return $zones_array;
+	}
+
+
+
+	public function state_list()
+	{
+
+		$states = array(
+                        ''=>'Select State...', 
+                        'AL'=>'Alabama',
+                        'AK'=>'Alaska',
+                        'AZ'=>'Arizona',
+                        'AR'=>'Arkansas',
+                        'CA'=>'California',
+                        'CO'=>'Colorado',
+                        'CT'=>'Connecticut',
+                        'DE'=>'Delaware',
+                        'DC'=>'District of Columbia',
+                        'FL'=>'Florida',
+                        'GA'=>'Georgia',
+                        'HI'=>'Hawaii',
+                        'ID'=>'Idaho',
+                        'IL'=>'Illinois',
+                        'IN'=>'Indiana',
+                        'IA'=>'Iowa',
+                        'KS'=>'Kansas',
+                        'KY'=>'Kentucky',
+                        'LA'=>'Louisiana',
+                        'ME'=>'Maine',
+                        'MD'=>'Maryland',
+                        'MA'=>'Massachusetts',
+                        'MI'=>'Michigan',
+                        'MN'=>'Minnesota',
+                        'MS'=>'Mississippi',
+                        'MO'=>'Missouri',
+                        'MT'=>'Montana',
+                        'NE'=>'Nebraska',
+                        'NV'=>'Nevada',
+                        'NH'=>'New Hampshire',
+                        'NJ'=>'New Jersey',
+                        'NM'=>'New Mexico',
+                        'NY'=>'New York',
+                        'NC'=>'North Carolina',
+                        'ND'=>'North Dakota',
+                        'OH'=>'Ohio',
+                        'OK'=>'Oklahoma',
+                        'OR'=>'Oregon',
+                        'PA'=>'Pennsylvania',
+                        'RI'=>'Rhode Island',
+                        'SC'=>'South Carolina',
+                        'SD'=>'South Dakota',
+                        'TN'=>'Tennessee',
+                        'TX'=>'Texas',
+                        'UT'=>'Utah',
+                        'VT'=>'Vermont',
+                        'VA'=>'Virginia',
+                        'WA'=>'Washington',
+                        'WV'=>'West Virginia',
+                        'WI'=>'Wisconsin',
+                        'WY'=>'Wyoming',
+                    );
+		return $states;
+                    
 	}
 
 	
