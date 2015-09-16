@@ -10,8 +10,7 @@
         <div class="row">
 
           <div class="col-md-12 headline wow bounceInDown">
-            <h2>Events</h2>
-            <p>Upcoming Events</p>
+            <h2>{{{ Auth::user()->first_name }}}'s Events</h2>
           </div>
           @foreach($events as $key=>$event)
           <div class="col-md-4 col-sm-6 wow bounceInLeft">
@@ -21,8 +20,8 @@
                   <img src="/img/{{ $event->img_url }}" alt="">
                 </div>
                 <div class="portfolio-item-description">
-                  <h3>{{{ $event->event_name }}}</h3>
-                  <p>{{{ $event->event_description }}}</p>
+                  <h3>Event Name: {{{ $event->event_name }}}</h3>
+                  <p>Where: {{{ $event->event_description }}}</p>
                 </div>
               </div>
             </a>
