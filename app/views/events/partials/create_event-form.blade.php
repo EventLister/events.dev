@@ -19,12 +19,12 @@
 
     <div class="col-sm-6 form-group @if($errors->has('event_start')) has-error @endif">
         {{ Form::label('event_start', 'Event Start') }}
-        {{ Form::text('event_start', null, ['class' => 'form-control', 'id' => 'datetimepicker'])}}
+        {{ Form::text('event_start', null, ['class' => 'form-control', 'id' => 'datetimepicker', 'readonly'])}}
     </div>
 
         <div class="col-sm-6 form-group @if($errors->has('event_end')) has-error @endif">
         {{ Form::label('event_end', 'Event End') }}
-        {{ Form::text('event_end', null, ['class' => 'form-control', 'id' => 'datetimepicker2'])}}
+        {{ Form::text('event_end', null, ['class' => 'form-control', 'id' => 'datetimepicker2', 'readonly'])}}
     </div>
 
     <div class="col-sm-6 form-group @if($errors->has('img_url')) has-error @endif">
