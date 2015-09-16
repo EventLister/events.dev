@@ -43,7 +43,7 @@
             <div class="form-group @if($errors->has('state')) has-error @endif">
 					<div class="col-sm-5">
                     {{ Form::label('state', 'State') }}
-					{{ $state}}
+					{{ $state }}
 					</div>
                     <div class="col-md-5">
                         {{ Form::label('time_zone', 'Time Zone') }}
