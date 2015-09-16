@@ -17,10 +17,20 @@ class CalendarEvent extends Model {
 	'event_end' => 'required|date',
 	);
 
-
+	// delete this function eventually
     public function user()
     {
         return $this->belongsTo('User', 'user_id');
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo('User', 'user_id');
+    }
+
+    public function attending()
+    {
+        return $this->belongsToMany('User', 'event_user', 'event_id', 'user_id');
     }
 
 }
