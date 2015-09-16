@@ -102,7 +102,7 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/jquery.datetimepicker.js"></script>
   <script>jQuery('#datetimepicker').datetimepicker();</script>
-    <script>jQuery('#datetimepicker2').datetimepicker();</script>
+  <script>jQuery('#datetimepicker2').datetimepicker();</script>
 
 </footer>
 </body>
