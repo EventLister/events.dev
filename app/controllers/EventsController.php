@@ -17,10 +17,13 @@ class EventsController extends \BaseController {
 	public function index()
 	{
 		$events = CalendarEvent::all();
-		// $users = DB::table('users')->where('votes', '>', 100)->get();
-		// $events = CalendarEvent::users() 
-		// Auth::user()->id
 		return View::make('events.index', compact('events'));
+	}
+
+	public function showEvents()
+	{
+		$events = CalendarEvent::all();
+		return View::make('events.events')->with('events', $events);
 	}
 
 	public function attend($id)
@@ -29,20 +32,18 @@ class EventsController extends \BaseController {
 		$user = Auth::user();
 
 		$user->eventsAttending()->attach($id);
+
+		return Redirect::action('EventsController@show', $id);
 	}
 
-	public function otherProfile($id)
-	{
-		$events = CalendarEvent::where('user_id', '=', $id)->get();
-		$user = User::find($id);
-		return View::make('events.otherProfile', compact('events', 'user'));
-	}
+	public function getNumberAttending($id)
+    {
+        $event = CalendarEvent::find($id);
+        $attendees = $event->attending();
+        $number = count($attendees); 
+        return $number; 
+    }
 
-		public function userProfile()
-	{
-		$events = CalendarEvent::where('user_id', '=', Auth::id())->get();
-		return View::make('events.profile', compact('events'));
-	}
 
 	/**
 	 * Show the form for creating a new event
@@ -53,15 +54,6 @@ class EventsController extends \BaseController {
 	{
 		return View::make('events.create');
 	}
-
-	public function getNumberAttending($id)
-    {
-        $event = CalendarEvent::find($id);
-        $attendees = $event->attending();
-        $number = count($attendees); 
-
-        return $number; 
-    }
 
 
 	/**
@@ -100,141 +92,8 @@ class EventsController extends \BaseController {
 	    }
 	}
 
-	public function createUser()
-	{
 
-		$timezones = $this->tz_list();
-		
-		$time_zone = Form::select('time_zone', $timezones,null,['class' => 'form-control']);
-
-		$states = $this->state_list();
-		
-		$state = Form::select('state', $states, null,['class' => 'form-control']);
-
-		return View::make('events.create_user', compact('time_zone', 'state'));
-
-	}
 	       
-
-
-
-
-	public function storeUser()
-	{
-		if(Input::hasFile('profile_img_url')){
-			$file = Input::file('profile_img_url');
-			$destinationPath = public_path() . '/img';
-			$filename = $file->getClientOriginalName();
-			Input::file('profile_img_url')->move($destinationPath, $filename);
-
-			$user = new User();
-			$user->password = Input::get('password');
-			$user->email = Input::get('email');
-			$user->first_name = Input::get('first_name');
-			$user->last_name = Input::get('last_name');
-			$user->username = Input::get('username');
-			$user->address = Input::get('address');
-			$user->city = Input::get('city');
-			$user->state = Input::get('state');
-			$user->zip_code = Input::get('zip_code');
-			$user->phone = Input::get('phone_number');
-			$user->profile_img_url = $filename; 
-			$user->time_zone = Input::get('time_zone');
-			$user->save();
-
-
-			Session::flash('successMessage', 'Account created successfully! You may now login.');
-			return Redirect::action('HomeController@showWelcome');
-		}else{
-			$user = new User();
-			$user->password = Input::get('password');
-			$user->email = Input::get('email');
-			$user->first_name = Input::get('first_name');
-			$user->last_name = Input::get('last_name');
-			$user->username = Input::get('username');
-			$user->address = Input::get('address');
-			$user->city = Input::get('city');
-			$user->state = Input::get('state');
-			$user->zip_code = Input::get('zip_code');
-			$user->phone = Input::get('phone_number');
-			$user->time_zone = Input::get('time_zone');
-			$user->save();
-
-
-			Session::flash('successMessage', 'Account created successfully! You may now login.');
-			return Redirect::action('HomeController@showWelcome');
-		}
-
-	}
-
-	public function editProfile($id)
-	{
-
-		$user = User::find($id);
-
-		$timezones = $this->tz_list();
-		
-		$time_zone = Form::select('time_zone', $timezones, $user->time_zone,['class' => 'form-control']);
-
-		$states = $this->state_list();
-		
-		$state = Form::select('state', $states, $user->state,['class' => 'form-control']);
-
-
-
-		return View::make('events.editProfile', compact('time_zone', 'state'))->with('user', $user);
-	}
-	
-	public function updateUser($id)
-	{
-		if(!$user) {
-
-			Session::flash('errorMessage', "User with id of $id is not found"); 
-
-			App::abort(404);  
-		}elseif($user->id == Auth::user()->id){
-			if(Input::hasFile('profile_img_url')){
-				$user = User::find($id);
-				$file = Input::file('img_url');
-				$destinationPath = public_path() . '/img';
-				$filename = $file->getClientOriginalName();
-				Input::file('img_url')->move($destinationPath, $filename);
-
-				$user->password = Input::get('password');
-				$user->email = Input::get('email');
-				$user->first_name = Input::get('first_name');
-				$user->last_name = Input::get('last_name');
-				$user->username = Input::get('username');
-				$user->address = Input::get('address');
-				$user->city = Input::get('city');
-				$user->state = Input::get('state');
-				$user->zip_code = Input::get('zip_code');
-				$user->phone = Input::get('phone');
-				$user->profile_img_url = $filename; 
-				$user->time_zone = Input::get('time_zone');
-
-				$user->save();
-
-			}else{
-				$user->password = Input::get('password');
-				$user->email = Input::get('email');
-				$user->first_name = Input::get('first_name');
-				$user->last_name = Input::get('last_name');
-				$user->username = Input::get('username');
-				$user->address = Input::get('address');
-				$user->city = Input::get('city');
-				$user->state = Input::get('state');
-				$user->zip_code = Input::get('zip_code');
-				$user->phone = Input::get('phone');
-				$user->time_zone = Input::get('time_zone');
-
-				$user->save();
-				
-				Session::flash('successMessage', 'Account updated successfully!');
-				return Redirect::action('EventsController@index');
-			}
-		}
-	}
 
 	/**
 	 * Display the specified event.
@@ -360,80 +219,7 @@ class EventsController extends \BaseController {
 
 
 
-	public function tz_list() {
-		$zones_array = array();
-		$timestamp = time();
-		$zones_array[''] = 'Select Timezone...';
-		foreach(timezone_identifiers_list() as $key => $zone) {
-		    date_default_timezone_set($zone);
-		    $current_date_time = date("h:i A T",time());
-		    $zones_array[$zone] = 'GMT ' . date('P', $timestamp) . $zone . ' (Now: ' . $current_date_time . ')';
-		}
-	  return $zones_array;
-	}
-
-
-
-	public function state_list()
-	{
-
-		$states = array(
-                        ''=>'Select State...', 
-                        'AL'=>'Alabama',
-                        'AK'=>'Alaska',
-                        'AZ'=>'Arizona',
-                        'AR'=>'Arkansas',
-                        'CA'=>'California',
-                        'CO'=>'Colorado',
-                        'CT'=>'Connecticut',
-                        'DE'=>'Delaware',
-                        'DC'=>'District of Columbia',
-                        'FL'=>'Florida',
-                        'GA'=>'Georgia',
-                        'HI'=>'Hawaii',
-                        'ID'=>'Idaho',
-                        'IL'=>'Illinois',
-                        'IN'=>'Indiana',
-                        'IA'=>'Iowa',
-                        'KS'=>'Kansas',
-                        'KY'=>'Kentucky',
-                        'LA'=>'Louisiana',
-                        'ME'=>'Maine',
-                        'MD'=>'Maryland',
-                        'MA'=>'Massachusetts',
-                        'MI'=>'Michigan',
-                        'MN'=>'Minnesota',
-                        'MS'=>'Mississippi',
-                        'MO'=>'Missouri',
-                        'MT'=>'Montana',
-                        'NE'=>'Nebraska',
-                        'NV'=>'Nevada',
-                        'NH'=>'New Hampshire',
-                        'NJ'=>'New Jersey',
-                        'NM'=>'New Mexico',
-                        'NY'=>'New York',
-                        'NC'=>'North Carolina',
-                        'ND'=>'North Dakota',
-                        'OH'=>'Ohio',
-                        'OK'=>'Oklahoma',
-                        'OR'=>'Oregon',
-                        'PA'=>'Pennsylvania',
-                        'RI'=>'Rhode Island',
-                        'SC'=>'South Carolina',
-                        'SD'=>'South Dakota',
-                        'TN'=>'Tennessee',
-                        'TX'=>'Texas',
-                        'UT'=>'Utah',
-                        'VT'=>'Vermont',
-                        'VA'=>'Virginia',
-                        'WA'=>'Washington',
-                        'WV'=>'West Virginia',
-                        'WI'=>'Wisconsin',
-                        'WY'=>'Wyoming',
-                    );
-		return $states;
-                    
-	}
+	
 
 	
 }
