@@ -16,7 +16,7 @@ class EventsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$events = CalendarEvent::all();
+		$events = CalendarEvent::orderBy('event_start', 'desc')->paginate(6);
 		return View::make('events.index', compact('events'));
 	}
 
