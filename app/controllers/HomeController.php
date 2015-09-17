@@ -30,7 +30,7 @@ class HomeController extends \BaseController {
 
 		if (Auth::attempt(array('username' => $username, 'password' => $password))) {
 			Session::flash('successMessage', 'Logged in succesfully!');
-			return Redirect::intended('/home');
+			return Redirect::intended('/events');
 		} else {
 			Session::flash('errorMessage', 'Logged in failed!'); 
 			return Redirect::action('HomeController@showWelcome');
