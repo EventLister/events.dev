@@ -21,7 +21,7 @@
 </head>
 <body>
 <header>
-    <nav class=" events_nav navbar navbar-inverse navbar-fixed-top">
+    <nav class=" events_nav navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -107,6 +107,7 @@
   <script src="/jquery.datetimepicker.js"></script>
   <script>jQuery('#datetimepicker').datetimepicker();</script>
   <script>jQuery('#datetimepicker2').datetimepicker();</script>
+
 
 
 </footer>
