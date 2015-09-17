@@ -28,10 +28,6 @@
                             <td>Male</td>
                           </tr>
                           <tr>
-                            <td>Home Address</td>
-                            <td>{{$user->address}}</td>
-                          </tr>
-                          <tr>
                             <td>Email</td>
                             <td><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
                           </tr>
