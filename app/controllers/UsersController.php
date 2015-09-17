@@ -132,18 +132,18 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		if(!$user) {
+		$user = User::find($id);
+        if(!$user) {
 
-			Session::flash('errorMessage', "User with id of $id is not found"); 
+            Session::flash('errorMessage', "User with id of $id is not found"); 
 
-			App::abort(404);  
-		}elseif($user->id == Auth::user()->id){
-			if(Input::hasFile('profile_img_url')){
-				$user = User::find($id);
-				$file = Input::file('img_url');
+            App::abort(404);  
+        }elseif($user->id == Auth::user()->id){
+            if(Input::hasFile('profile_img_url')){
+				$file = Input::file('profile_img_url');
 				$destinationPath = public_path() . '/img';
 				$filename = $file->getClientOriginalName();
-				Input::file('img_url')->move($destinationPath, $filename);
+				Input::file('profile_img_url')->move($destinationPath, $filename);
 
 				$user->password = Input::get('password');
 				$user->email = Input::get('email');
