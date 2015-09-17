@@ -237,22 +237,29 @@ class EventsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-
 			$event = CalendarEvent::find($id);
-
 			if(!$event) {
 
 				Session::flash('errorMessage', "Event with id of $id is not found"); 
 
 				App::abort(404);  
 			}
-			if(Input::file()){
+			if(Input::get('img_url') != ''){
+
 				$file = Input::file('img_url');
 				$destinationPath = public_path() . '/img';
 				$filename = $file->getClientOriginalName();
 				Input::file('img_url')->move($destinationPath, $filename);
+
+				$event->event_name = Input::get('event_name');
+				$event->event_description = Input::get('event_description');
+				$event->event_location = Input::get('event_location');
+				$event->event_start = Input::get('event_start');
+				$event->event_end = Input::get('event_end');
 				$event->img_url = $filename;
+				$event->save();
 			}
+
 			$event->event_name = Input::get('event_name');
 			$event->event_description = Input::get('event_description');
 			$event->event_location = Input::get('event_location');
