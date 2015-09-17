@@ -63,6 +63,7 @@
     </nav>
 </header>
 <main>
+    @yield('carousel')
     <div class="container">
         @if (Session::has('successMessage'))
             <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
