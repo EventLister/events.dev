@@ -16,7 +16,7 @@
 
           @foreach($events as $key=>$event)
           <div class="col-md-4 col-sm-6 wow bounceInLeft">
-            <a href="/show/{{ $event->id }}" target="_blank" class="pop-up" title="Caption 1">
+            <a href="{{{action ('EventsController@show', $event->id)}}}" target="_blank" class="pop-up" title="Caption 1">
               <div class="portfolio-item">
                 <div class="portfolio-item-preview">
                   <img src="/img/{{ $event->img_url }}" alt="">

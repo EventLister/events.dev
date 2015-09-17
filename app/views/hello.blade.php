@@ -39,7 +39,7 @@
 					<p>Welcome to event lister</p>
 				</div>
 				<div class="col-md-8 col-md-offset-2">
-					<a href="{{{action('EventsController@createUser')}}}">
+					<a href="{{{action('UsersController@create')}}}">
 					<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal">
 					  Sign Up
 					</button></a>

@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
         @foreach($events as $key=> $event)
-          <a href="/show/{{ $event->id }}" target="_blank"><li>Event: {{{$event->event_name}}}  Attending: {{$event->attending->count()}} </li></a>
+          <a href="{{{action ('EventsController@show', $event->id)}}}" target="_blank"><li>Event: {{{$event->event_name}}}  Attending: {{$event->attending->count()}} </li></a>
         @endforeach
       </div>
       <div class="modal-footer">

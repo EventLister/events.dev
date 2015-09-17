@@ -37,8 +37,8 @@
                 </div>
             </div>
                     <div class="well" id="form">
-                        {{ Form::open(array('action' => 'EventsController@storeUser')) }}
-                            @include('events.partials.create_user_form')
+                        {{ Form::open(array('action' => 'UsersController@store')) }}
+                            @include('users.partials.create_user_form')
                         {{Form::close()}}
                     </div>
             </div>

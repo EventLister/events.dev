@@ -16,28 +16,12 @@ class HomeController extends \BaseController {
 	*/
 
 
-
-	public function tz_list() {
-	  $zones_array = array();
-	  $timestamp = time();
-	  foreach(timezone_identifiers_list() as $key => $zone) {
-	    date_default_timezone_set($zone);
-	    $zones_array[$key]['zone'] = $zone;
-	    $zones_array[$key]['diff_from_GMT'] = 'GMT ' . date('P', $timestamp);
-	  }
-	  return $zones_array;
-	}
-
 	public function showWelcome()
 	{
 	    return View::make('hello');
 	}
 
-	public function showEvents()
-	{
-		$events = CalendarEvent::all();
-		return View::make('events.events')->with('events', $events);
-	}
+
 	public function doLogin()
 	{
 		$username = Input::get('username'); 
