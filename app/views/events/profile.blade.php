@@ -48,8 +48,7 @@
                 <div class="panel-footer">
                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View Events</button>
                     <span class="pull-right">
-                        <a href="/editProfile/{{{Auth::user()->id}}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a href="/editProfile/{{{Auth::user()->id}}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-lg btn-warning">Edit Profile <i class="glyphicon glyphicon-edit"></i></a>
                     </span>
                 </div>
           </div>
