@@ -10,9 +10,13 @@
             <p>Start: {{{ $event->event_start }}}</p>
             <p>Finish: {{{ $event->event_end }}}</p>
             <p>Description: {{{ $event->event_description }}}</p>
+            <p>Attending: {{{$event->attending}}}</p>
             @if($event->img_url != '')
                 <img src="/img/{{ $event->img_url }}" alt="">
             @endif
+
+            <div class="panel-footer">
+               <a href="{{{ action('EventsController@attend' , $event->id) }}}"> <button type="button" class="btn btn-info btn-lg">Attend Event</button></a>
         </div>
     </div>
 @stop
