@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-<title>{{$user->first_name}}'s Profile</title>
+<title>{{$user->username}}'s Profile</title>
 @stop
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class=" col-md-12 col-lg-12 "> 
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">{{$user->first_name}}</h3>
+              <h3 class="panel-title">{{$user->username}}</h3>
             </div>
             <div class="panel-body">
               <div class="row">
