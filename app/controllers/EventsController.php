@@ -119,9 +119,34 @@ class EventsController extends \BaseController {
 
 
 
-		public function storeUser()
+	public function storeUser()
 	{
-		$user = new User();
+		if(Input::hasFile('profile_img_url')){
+			$file = Input::file('profile_img_url');
+			$destinationPath = public_path() . '/img';
+			$filename = $file->getClientOriginalName();
+			Input::file('profile_img_url')->move($destinationPath, $filename);
+
+			$user = new User();
+			$user->password = Input::get('password');
+			$user->email = Input::get('email');
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->username = Input::get('username');
+			$user->address = Input::get('address');
+			$user->city = Input::get('city');
+			$user->state = Input::get('state');
+			$user->zip_code = Input::get('zip_code');
+			$user->phone = Input::get('phone_number');
+			$user->profile_img_url = $filename; 
+			$user->time_zone = Input::get('time_zone');
+			$user->save();
+
+
+			Session::flash('successMessage', 'Account created successfully! You may now login.');
+			return Redirect::action('HomeController@showWelcome');
+		}else{
+			$user = new User();
 			$user->password = Input::get('password');
 			$user->email = Input::get('email');
 			$user->first_name = Input::get('first_name');
@@ -138,6 +163,7 @@ class EventsController extends \BaseController {
 
 			Session::flash('successMessage', 'Account created successfully! You may now login.');
 			return Redirect::action('HomeController@showWelcome');
+		}
 
 	}
 
@@ -161,31 +187,52 @@ class EventsController extends \BaseController {
 	
 	public function updateUser($id)
 	{
-		$user = User::find($id);
-
 		if(!$user) {
 
 			Session::flash('errorMessage', "User with id of $id is not found"); 
 
 			App::abort(404);  
 		}elseif($user->id == Auth::user()->id){
+			if(Input::hasFile('profile_img_url')){
+				$user = User::find($id);
+				$file = Input::file('img_url');
+				$destinationPath = public_path() . '/img';
+				$filename = $file->getClientOriginalName();
+				Input::file('img_url')->move($destinationPath, $filename);
 
-			$user->password = Input::get('password');
-			$user->email = Input::get('email');
-			$user->first_name = Input::get('first_name');
-			$user->last_name = Input::get('last_name');
-			$user->username = Input::get('username');
-			$user->address = Input::get('address');
-			$user->city = Input::get('city');
-			$user->state = Input::get('state');
-			$user->zip_code = Input::get('zip_code');
-			$user->phone = Input::get('phone');
-			$user->time_zone = Input::get('time_zone');
+				$user->password = Input::get('password');
+				$user->email = Input::get('email');
+				$user->first_name = Input::get('first_name');
+				$user->last_name = Input::get('last_name');
+				$user->username = Input::get('username');
+				$user->address = Input::get('address');
+				$user->city = Input::get('city');
+				$user->state = Input::get('state');
+				$user->zip_code = Input::get('zip_code');
+				$user->phone = Input::get('phone');
+				$user->profile_img_url = $filename; 
+				$user->time_zone = Input::get('time_zone');
 
-			$user->save();
-			
-			Session::flash('successMessage', 'Account updated successfully!');
-			return Redirect::action('EventsController@index');
+				$user->save();
+
+			}else{
+				$user->password = Input::get('password');
+				$user->email = Input::get('email');
+				$user->first_name = Input::get('first_name');
+				$user->last_name = Input::get('last_name');
+				$user->username = Input::get('username');
+				$user->address = Input::get('address');
+				$user->city = Input::get('city');
+				$user->state = Input::get('state');
+				$user->zip_code = Input::get('zip_code');
+				$user->phone = Input::get('phone');
+				$user->time_zone = Input::get('time_zone');
+
+				$user->save();
+				
+				Session::flash('successMessage', 'Account updated successfully!');
+				return Redirect::action('EventsController@index');
+			}
 		}
 	}
 
