@@ -5,7 +5,7 @@
 @section('content')
     <div class="well col-md-10 col-md-offset-1">
         <div>
-            <h2>{{{ $event->event_name }}} Hosted By:<a href="{{{ action('EventsController@userProfile' , $event->creator->id) }}}"> {{{$event->creator->username}}}</a> </h2>
+            <h2>{{{ $event->event_name }}} Hosted By:<a href="{{{ action('EventsController@otherProfile' , $event->creator->id) }}}"> {{{$event->creator->username}}}</a> </h2>
             <p>Where: {{{ $event->event_location }}}</p>
             <p>Start: {{{ $event->event_start }}}</p>
             <p>Finish: {{{ $event->event_end }}}</p>
