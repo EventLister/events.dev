@@ -34,7 +34,7 @@ class EventsController extends \BaseController {
 	public function otherProfile($id)
 	{
 		$events = CalendarEvent::where('user_id', '=', $id)->get();
-		$user = User::where('id', '=', $id)->get();
+		$user = User::find($id);
 		return View::make('events.otherProfile', compact('events', 'user'));
 	}
 
