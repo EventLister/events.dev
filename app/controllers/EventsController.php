@@ -16,6 +16,7 @@ class EventsController extends \BaseController {
 	 */
 	public function index()
 	{
+		$events = CalendarEvent::all();
 		// $users = DB::table('users')->where('votes', '>', 100)->get();
 		// $events = CalendarEvent::users() 
 		// Auth::user()->id
