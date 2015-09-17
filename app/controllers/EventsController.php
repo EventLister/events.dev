@@ -244,7 +244,7 @@ class EventsController extends \BaseController {
 
 				App::abort(404);  
 			}
-			if(Input::get('img_url') != ''){
+			if(Input::hasFile('img_url')){
 
 				$file = Input::file('img_url');
 				$destinationPath = public_path() . '/img';
