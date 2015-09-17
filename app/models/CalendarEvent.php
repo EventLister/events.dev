@@ -33,4 +33,5 @@ class CalendarEvent extends Model {
         return $this->belongsToMany('User', 'event_user', 'event_id', 'user_id');
     }
 
+     
 }

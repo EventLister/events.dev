@@ -23,16 +23,13 @@ class EventsController extends \BaseController {
 		return View::make('events.index', compact('events'));
 	}
 
-	// public function attend($id)
-	// {
+	public function attend($id)
+	{
 		
-	// 	$user = Auth::user()->find($id);
+		$user = Auth::user();
 
-	// 	$event = CalendarEvent($)
-
-	// 	$user->eventsAttending()attach($event);
-	// }
-
+		$user->eventsAttending()->attach($id);
+	}
 
 	public function userProfile()
 	{
@@ -49,6 +46,16 @@ class EventsController extends \BaseController {
 	{
 		return View::make('events.create');
 	}
+
+	public function getNumberAttending($id)
+    {
+        $event = CalendarEvent::find($id);
+        $attendees = $event->attending();
+        $number = count($attendees); 
+
+        return $number; 
+    }
+
 
 	/**
 	 * Store a newly created event in storage.
@@ -184,6 +191,7 @@ class EventsController extends \BaseController {
 	public function show($id)
 	{
 		$event = CalendarEvent::find($id);
+		$event->attending = $this->getNumberAttending($id);
 
 		if(!$event) {
  
