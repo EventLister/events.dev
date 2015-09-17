@@ -31,7 +31,14 @@ class EventsController extends \BaseController {
 		$user->eventsAttending()->attach($id);
 	}
 
-	public function userProfile()
+	public function otherProfile($id)
+	{
+		$events = CalendarEvent::where('user_id', '=', $id)->get();
+		$user = User::where('id', '=', $id)->get();
+		return View::make('events.otherProfile', compact('events', 'user'));
+	}
+
+		public function userProfile()
 	{
 		$events = CalendarEvent::where('user_id', '=', Auth::id())->get();
 		return View::make('events.profile', compact('events'));
