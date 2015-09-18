@@ -11,6 +11,7 @@
 |
 */
 Route::get('attend/{id}', 'EventsController@attend');
+Route::get('unAttend/{id}', 'EventsController@unAttend');
 Route::get('/myEvents', 'EventsController@userEvents');
 Route::get('/allevents', 'EventsController@showEvents');
 

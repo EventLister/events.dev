@@ -22,6 +22,7 @@ class EventsController extends \BaseController {
 
 	public function showEvents()
 	{
+
 		$events = CalendarEvent::all();
 		return View::make('events.events')->with('events', $events);
 	}
@@ -36,14 +37,15 @@ class EventsController extends \BaseController {
 		return Redirect::action('EventsController@show', $id);
 	}
 
-	public function getNumberAttending($id)
-    {
-        $event = CalendarEvent::find($id);
-        $attendees = $event->attending();
-        $number = count($attendees); 
-        return $number; 
-    }
+	public function unAttend($id)
+	{
+		
+		$user = Auth::user();
 
+		$user->eventsAttending()->detach($id);
+
+		return Redirect::action('EventsController@show', $id);
+	}
 
 	/**
 	 * Show the form for creating a new event
@@ -104,7 +106,6 @@ class EventsController extends \BaseController {
 	public function show($id)
 	{
 		$event = CalendarEvent::find($id);
-		$event->attending = $this->getNumberAttending($id);
 
 		if(!$event) {
  
