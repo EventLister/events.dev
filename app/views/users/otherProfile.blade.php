@@ -24,16 +24,12 @@
                             <td>{{$user->created_at}}</td>
                           </tr>
                           <tr>
-                            <td>Gender</td>
-                            <td>Male</td>
-                          </tr>
-                          <tr>
                             <td>Email</td>
                             <td><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
                           </tr>
                           <tr>
                             <td>Phone Number</td>
-                            <td>{{Auth::user()->phone}}</td>
+                            <td>{{$user->phone}}</td>
                           </tr>
                                
                         </tbody>
