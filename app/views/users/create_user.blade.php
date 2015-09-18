@@ -37,7 +37,7 @@
                 </div>
             </div>
                     <div class="well" id="form">
-                        {{ Form::open(array('action' => 'UsersController@store')) }}
+                        {{ Form::open(array('action' => 'UsersController@store', 'files' => true)) }}
                             @include('users.partials.create_user_form')
                         {{Form::close()}}
                     </div>
