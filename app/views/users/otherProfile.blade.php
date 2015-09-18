@@ -39,7 +39,7 @@
             </div>
                 <div class="panel-footer">
                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View Events</button>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">View Events</button>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Events Attending</button>
                     
                 </div>
           </div>
