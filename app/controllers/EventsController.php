@@ -47,6 +47,7 @@ class EventsController extends \BaseController {
 		return Redirect::action('EventsController@show', $id);
 	}
 
+
 	/**
 	 * Show the form for creating a new event
 	 *
