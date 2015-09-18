@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
         @foreach($events as $key=> $event)
-          @if($event->attending->user_id == $event->id)
+          @if($event->attending->contains($event->id))
               <a href="{{{action ('EventsController@show', $event->id)}}}" target="_blank"><li>Event: {{{$event->event_name}}}  Attending: {{$event->attending->count()}} </li></a>
           @endif
         @endforeach
