@@ -15,17 +15,12 @@
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{{ Auth::user()->profile_img_url ? '/img/' . Auth::user()->profile_img_url : '/images/avatar.png' }}}" class="img-circle img-responsive"> 
                 </div>
-                
                     <div class=" col-md-12 col-lg-12 "> 
                       <table class="table table-user-information">
                         <tbody>
                           <tr>
                             <td>Member Since:</td>
                             <td>{{Auth::user()->created_at}}</td>
-                          </tr>
-                          <tr>
-                            <td>Gender</td>
-                            <td>Male</td>
                           </tr>
                           <tr>
                             <td>Home Address</td>
@@ -38,8 +33,7 @@
                           <tr>
                             <td>Phone Number</td>
                             <td>{{Auth::user()->phone}}</td>
-                          </tr>
-                               
+                          </tr>   
                         </tbody>
                       </table>
                     </div>
