@@ -16,7 +16,13 @@
             @endif
 
             <div class="panel-footer">
+            @if ($event->attending->contains(Auth::id()))
+               <a href="{{{ action('EventsController@unAttend' , $event->id) }}}"> <button type="button" class="btn btn-info btn-lg">Unattended Event</button></a>
+            @else
                <a href="{{{ action('EventsController@attend' , $event->id) }}}"> <button type="button" class="btn btn-info btn-lg">Attend Event</button></a>
+            @endif
         </div>
     </div>
 @stop
+              
+
