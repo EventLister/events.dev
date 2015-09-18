@@ -159,6 +159,8 @@ class UsersController extends \BaseController {
 				$user->time_zone = Input::get('time_zone');
 
 				$user->save();
+                Session::flash('successMessage', 'Account and img updated successfully!');
+                return Redirect::action('UsersController@index');
 
 			}else{
 				$user->password = Input::get('password');

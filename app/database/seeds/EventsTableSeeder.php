@@ -18,7 +18,7 @@ class EventsTableSeeder extends Seeder {
             'event_start' => $faker->dateTimeThisYear,
             'event_end' => $faker->dateTimeThisMonth,
             'img_url' => "nature-q-c-640-480-" . $faker->numberBetween($min = 1, $max = 10) . '.jpg',
-            'user_id' => $faker->numberBetween($min = 1, $max = 4),
+            'user_id' => $faker->numberBetween($min = 1, $max = 11),
 			]);
 		}
 	}
